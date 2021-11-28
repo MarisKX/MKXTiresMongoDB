@@ -24,6 +24,12 @@ def get_invoices():
     return render_template("invoices.html", invoices=invoices)
 
 
+@app.route("/stock")
+def get_stock_level():
+    stock = mongo.db.stock_level.find()
+    return render_template("stock.html", stock=stock)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

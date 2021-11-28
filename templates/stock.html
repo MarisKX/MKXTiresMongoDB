@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKX Wheeler Dealer</title>
+</head>
+<body>
+    {% for item in stock %}
+        {{ stock.Category }}<br>
+        {{ stock.Size }}<br>
+        {{ stock.Width }}<br>
+        {{ stock.Bolt_pattern }}<br>
+        {{ stock.ET }}<br>
+        {{ stock.OE }}<br>
+        {{ stock.Description }}<br>
+        {{ stock.Price }}<br>
+        <br>
+    {% endfor %}
+    <a href="/workspace/MKXTiresMongoDB/templates/invoices.html">Invoices</a>
+</body>
+</html>

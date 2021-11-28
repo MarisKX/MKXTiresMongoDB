@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
     {% for invoice in invoices %}
         {{ invoice.Suplier }}<br>
         {{ invoice.Date }}<br>
@@ -23,5 +18,5 @@
         {{ invoice.Products.1.Quantity }}<br>
         {{ invoice.Products.1.Price }}<br>
     {% endfor %}
-</body>
-</html>
+    
+{% endblock %}
