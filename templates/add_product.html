@@ -7,16 +7,13 @@
         <form class="col s12" method="POST" action="">
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <select>
+                    <select id="category_name" name="category_name">
                     <option value="" disabled selected>Select Category</option>
-                    <option value="1">Steel Rims</option>
-                    <option value="2">Alloy Rims</option>
-                    <option value="3">Summer Tires</option>
-                    <option value="4">Winter Tires</option>
-                    <option value="5">Steel Wheel Set</option>
-                    <option value="6">Alloy Wheel Set</option>
+                    {% for category in categories %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
                     </select>
-                    <label>Select category</label>
+                    <label for="category_name">Select category</label>
                 </div>
             </div>
             <div class="row">
