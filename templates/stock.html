@@ -11,25 +11,33 @@
         <th class="tooltipped" data-position="down" data-tooltip="Rim width in inches">Width</th>
         <th class="tooltipped" data-position="down" data-tooltip="Bolt pattern - amount of bolts x distance between bolt centers">Bolt pattern</th>
         <th class="tooltipped" data-position="down" data-tooltip="ET value">ET</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Center (naaf)">Center</th>
         <th class="tooltipped" data-position="down" data-tooltip=" 'V' if rims is original equipment">OE</th>
+        <th class="tooltipped" data-position="down" data-tooltip="W = winter, Z = zommer">Tires</th>
+        <th class="tooltipped" data-position="down" data-tooltip="With in cm, height in % and size in inches (195/65R15)">Tyre size</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Manufacturer and model of tyre">Tyre model</th>
         <th class="tooltipped" data-position="down" data-tooltip="Short description">Description</th>
         <th class="tooltipped" data-position="down" data-tooltip="Sales price">Price</th>
     </tr>
     {% for item in stock %}
     <tr>
-        <td>{{ item.Category }}</td>
-        <td>{{ item.Code }}</td>
-        <td>{{ item.Size }}</td>
-        <td>{{ item.Width }}</td>
-        <td>{{ item.Bolt_pattern }}</td>
-        <td>{{ item.ET }}</td>
-        {% if item.OE == true %}
+        <td>{{ item.category }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.size }}</td>
+        <td>{{ item.width }}</td>
+        <td>{{ item.bolt_pattern }}</td>
+        <td>{{ item.et }}</td>
+        <td>{{ item.center }}</td>
+        {% if item.oe == true %}
         <td>><i class="fas fa-check"></i></td>
-        {% elif item.OE == false %}
+        {% elif item.oe == false %}
         <td> </td>
         {% endif %}
-        <td>{{ item.Description }}</td>
-        <td>{{ item.Price }}</td>
+        <td>{{ item.tires }}</td>
+        <td>{{ item.tyre_size }}</td>
+        <td>{{ item.tyre_model }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.price }}</td>
     </tr>
     {% endfor %}
 </table>
