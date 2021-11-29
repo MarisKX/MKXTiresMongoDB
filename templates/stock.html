@@ -1,16 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
+<table>
+    <tr>
+        <th class="tooltipped" data-position="down" data-tooltip="Category - rims, tires or complete wheel">Category</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Stock Item Code from Invoice">Code</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Rim size in inches">Size</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Rim width in inches">Width</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Bolt pattern - amount of bolts x distance between bolt centers">Bolt pattern</th>
+        <th class="tooltipped" data-position="down" data-tooltip="ET value">ET</th>
+        <th class="tooltipped" data-position="down" data-tooltip=" 'V' if rims is original equipment">OE</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Short description">Description</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Sales price">Price</th>
+    </tr>
     {% for item in stock %}
-        {{ item.Category }}<br>
-        {{ item.Size }}<br>
-        {{ item.Width }}<br>
-        {{ item.Bolt_pattern }}<br>
-        {{ item.ET }}<br>
-        {{ item.OE }}<br>
-        {{ item.Description }}<br>
-        {{ item.Price }}<br>
-        <br>
+    <tr>
+        <td>{{ item.Category }}</td>
+        <td>{{ item.Code }}</td>
+        <td>{{ item.Size }}</td>
+        <td>{{ item.Width }}</td>
+        <td>{{ item.Bolt_pattern }}</td>
+        <td>{{ item.ET }}</td>
+        {% if item.OE == true %}
+        <td>><i class="fas fa-check"></i></td>
+        {% elif item.OE == false %}
+        <td> </td>
+        {% endif %}
+        <td>{{ item.Description }}</td>
+        <td>{{ item.Price }}</td>
+    </tr>
     {% endfor %}
+</table>
 
 {% endblock %}
