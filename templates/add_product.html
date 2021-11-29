@@ -4,7 +4,7 @@
     <h3 class="light-blue-text text-darken-4 center-align">Add New Product</h3>
 
     <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('add_product') }}">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <select id="category_name" name="category_name">
@@ -24,47 +24,40 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 m2 offset-m1">
-                    <select>
-                    <option value="" disabled selected>Select Rim Size</option>
-                    <option value="1">13"</option>
-                    <option value="2">14"</option>
-                    <option value="3">15"</option>
-                    <option value="4">16"</option>
-                    <option value="5">17"</option>
-                    <option value="6">18"</option>
-                    <option value="7">19"</option>
-                    <option value="8">20"</option>
-                    <option value="9">21"</option>
-                    <option value="10">22"</option>
-                    </select>
-                    <label>Select Rim Size</label>
+                    <select id="rim_size" name="rim_size">
+                        <option value="" disabled selected>Select Rim Size</option>
+                        {% for rim_size in rim_sizes %}
+                            <option value="{{ rim_size.rim_size }}">{{ rim_size.rim_size }}</option>
+                        {% endfor %}
+                        </select>
+                    <label for="rim_size">Select Rim Size</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <select>
+                    <select id="width" name="width">
                     <option value="" disabled selected>Select Rim Width</option>
-                    <option value="1">4.5</option>
-                    <option value="2">5</option>
-                    <option value="3">5.5</option>
-                    <option value="4">6</option>
-                    <option value="5">6.5</option>
-                    <option value="6">7</option>
-                    <option value="7">7.5</option>
+                    <option value="4.5">4.5</option>
+                    <option value="5">5</option>
+                    <option value="5.5">5.5</option>
+                    <option value="6">6</option>
+                    <option value="6.5">6.5</option>
+                    <option value="7">7</option>
+                    <option value="7.5">7.5</option>
                     <option value="8">8</option>
-                    <option value="9">8.5</option>
+                    <option value="8.5">8.5</option>
                     </select>
-                    <label>Select Rim Width</label>
+                    <label for="width">Select Rim Width</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="bolt_pattern" type="text" class="validate">
+                    <input id="bolt_pattern" name="bolt_pattern" type="text" class="validate">
                     <label for="bolt_pattern">Bolt Pattern</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="et_value" type="text" class="validate">
-                    <label for="et_value">ET Value</label>
+                    <input id="et" name="et" type="text" class="validate">
+                    <label for="et">ET Value</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="center_diameter" type="text" class="validate">
-                    <label for="center_diameter">Center Diameter</label>
+                    <input id="center" name="center" type="text" class="validate">
+                    <label for="center">Center Diameter</label>
                 </div>
             </div>
             <p>
@@ -75,32 +68,39 @@
             </p>
             <div class="row">
                 <div class="input-field col s12 m2 offset-m1">
-                    <select>
+                    <select id="tyre_type" name="tyre_type">
                     <option value="" disabled selected>Select Type</option>
-                    <option value="1">-</option>
-                    <option value="2">W</option>
-                    <option value="3">Z</option>
+                    <option value="-">-</option>
+                    <option value="W">W</option>
+                    <option value="Z">Z</option>
                     </select>
-                    <label>Select Type</label>
+                    <label for="tyre_type">Select Type</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="tyre_size" type="text" class="validate">
+                    <input id="tyre_size" name="tyre_size" type="text" class="validate">
                     <label for="tyre_size">Tyre Size</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="tyre_description" type="text" class="validate">
-                    <label for="tyre_description">Manufacturer/model/DOT</label>
+                    <input id="tyre_model" name="tyre_model" type="text" class="validate">
+                    <label for="tyre_model">Manufacturer/model/DOT</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <input id="product_description" type="text" class="validate">
-                    <label for="product_description">Description</label>
+                    <input id="description" name="description" type="text" class="validate">
+                    <label for="description">Description</label>
                 </div>
                 <div class="input-field col s12 m3 offset-m3">
                     <i class="fas fas fa-euro-sign prefix light-blue-text text-darken-4"></i>
-                    <input id="price" type="text" class="validate">
+                    <input id="price" name="price" type="text" class="validate">
                     <label for="price">Price</label>
+                </div>
+            </div>
+            <div class="div row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light green lighten-2 btn">
+                        <i class="far fa-arrow-alt-circle-up left"></i>Add product
+                    </button>
                 </div>
             </div>
         </form>

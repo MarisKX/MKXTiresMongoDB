@@ -23,17 +23,17 @@
     <tr>
         <td>{{ item.category_name }}</td>
         <td>{{ item.code }}</td>
-        <td>{{ item.size }}</td>
+        <td>{{ item.rim_size }}</td>
         <td>{{ item.width }}</td>
         <td>{{ item.bolt_pattern }}</td>
         <td>{{ item.et }}</td>
         <td>{{ item.center }}</td>
-        {% if item.oe == true %}
-        <td>><i class="fas fa-check"></i></td>
-        {% elif item.oe == false %}
-        <td> </td>
+        {% if item.oe == "true" %}
+            <td><i class="fas fa-check"></i></td>
+        {% elif item.oe == "false" %}
+            <td> </td>
         {% endif %}
-        <td>{{ item.tires }}</td>
+        <td>{{ item.tyre_type }}</td>
         <td>{{ item.tyre_size }}</td>
         <td>{{ item.tyre_model }}</td>
         <td>{{ item.description }}</td>
