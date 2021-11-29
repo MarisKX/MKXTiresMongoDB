@@ -17,3 +17,7 @@ body {
 .alert-success {
     color: green;
 }
+
+.profile-owner {
+    text-transform: capitalize;
+}
