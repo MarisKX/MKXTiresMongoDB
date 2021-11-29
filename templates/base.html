@@ -21,25 +21,30 @@
             <a href="{{ url_for('dashboard') }}" class="brand-logo">MKX Wheeler Dealer</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ url_for('get_invoices') }}">In Invoices</a></li>
-                <li><a href="#">Out Invoices</a></li>
-                <li><a href="{{ url_for('get_stock_level') }}">Stock</a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% if session.user %}
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('get_invoices') }}">In Invoices</a></li>
+                    <li><a href="#">Out Invoices</a></li>
+                    <li><a href="{{ url_for('get_stock_level') }}">Stock</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
             </ul>
             </div>
         </nav>
         
         <ul class="sidenav" id="mobile-demo">
             <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url_for('get_invoices') }}">In Invoices</a></li>
-            <li><a href="#">Out Invoices</a></li>
-            <li><a href="{{ url_for('get_stock_level') }}">Stock</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="{{ url_for('login') }}">Log In</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('get_invoices') }}">In Invoices</a></li>
+                <li><a href="#">Out Invoices</a></li>
+                <li><a href="{{ url_for('get_stock_level') }}">Stock</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
         </ul>
     </header>
     <section>
