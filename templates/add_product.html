@@ -98,7 +98,10 @@
             </div>
             <div class="div row">
                 <div class="col s12 center-align">
-                    <button type="submit" class="waves-effect waves-light green darken-1 btn">
+                    <a href="{{ url_for('get_stock_level') }}" class="waves-effect waves-light red darken-1 btn product-view-btn">
+                        <i class="far fa-window-close left"></i>Cancel
+                    </a> 
+                    <button type="submit" class="waves-effect waves-light green darken-1 btn product-view-btn">
                         <i class="far fa-arrow-alt-circle-up left"></i>Add product
                     </button>
                 </div>

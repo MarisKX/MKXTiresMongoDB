@@ -8,9 +8,13 @@
             <div class="row">
                 <div class="input-field col s12 m6">
                     <select id="category_name" name="category_name" class="validate" required>
-                    <option value="" disabled selected>Select Category</option>
+                    <option value="" disabled>Select Category</option>
                     {% for category in categories %}
-                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% if category.category_name == product.category_name %}
+                            <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                        {% else %}
+                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endif %}  
                     {% endfor %}
                     </select>
                     <label for="category_name">Select category</label>
@@ -18,87 +22,102 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <input id="code" name="code" type="text" class="validate" required>
+                    <input id="code" name="code" type="text" class="validate" value="{{ product.code }}" required>
                     <label for="code">Product Code</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m2 offset-m1">
                     <select id="rim_size" name="rim_size">
-                        <option value="" disabled selected>Select Rim Size</option>
+                        <option value="" disabled>Select Rim Size</option>
                         {% for rim_size in rim_sizes %}
-                            <option value="{{ rim_size.rim_size }}">{{ rim_size.rim_size }}</option>
+                            {% if rim_size.rim_size == product.rim_size %}
+                                <option value="{{ rim_size.rim_size }}" selected>{{ rim_size.rim_size }}</option>
+                            {% else %}
+                                <option value="{{ rim_size.rim_size }}">{{ rim_size.rim_size }}</option>
+                            {% endif %}  
                         {% endfor %}
                         </select>
                     <label for="rim_size">Select Rim Size</label>
                 </div>
                 <div class="input-field col s12 m2">
                     <select id="width" name="width">
-                    <option value="" disabled selected>Select Rim Width</option>
-                    <option value="4.5">4.5</option>
-                    <option value="5">5</option>
-                    <option value="5.5">5.5</option>
-                    <option value="6">6</option>
-                    <option value="6.5">6.5</option>
-                    <option value="7">7</option>
-                    <option value="7.5">7.5</option>
-                    <option value="8">8</option>
-                    <option value="8.5">8.5</option>
+                        {% if product.width == product.width %}
+                            <option value="{{ product.width }}" selected>{{ product.width }}</option>
+                            <option value="4.5">4.5</option>
+                            <option value="5">5</option>
+                            <option value="5.5">5.5</option>
+                            <option value="6">6</option>
+                            <option value="6.5">6.5</option>
+                            <option value="7">7</option>
+                            <option value="7.5">7.5</option>
+                            <option value="8">8</option>
+                            <option value="8.5">8.5</option>
+                        {% endif %}  
                     </select>
                     <label for="width">Select Rim Width</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="bolt_pattern" name="bolt_pattern" type="text" class="validate">
+                    <input id="bolt_pattern" name="bolt_pattern" type="text" class="validate" value="{{ product.bolt_pattern }}">
                     <label for="bolt_pattern">Bolt Pattern</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="et" name="et" type="text" class="validate">
+                    <input id="et" name="et" type="text" class="validate" value="{{ product.et }}">
                     <label for="et">ET Value</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="center" name="center" type="text" class="validate">
+                    <input id="center" name="center" type="text" class="validate" value="{{ product.center }}">
                     <label for="center">Center Diameter</label>
                 </div>
             </div>
             <p>
                 <label for="oe">
-                  <input type="checkbox" id="oe" name="oe" class="filled-in"/>
-                  <span>OE</span>
+                    {% if product.oe == "true" %}
+                        <input type="checkbox" id="oe" name="oe" class="filled-in" checked/>
+                    {% else %}
+                        <input type="checkbox" id="oe" name="oe" class="filled-in"/>
+                    {% endif %}
+                    <span>OE</span>
                 </label>
             </p>
             <div class="row">
                 <div class="input-field col s12 m2 offset-m1">
                     <select id="tyre_type" name="tyre_type" class="validate" required>
-                    <option value="" disabled selected>Select Type</option>
-                    <option value="-">-</option>
-                    <option value="W">W</option>
-                    <option value="Z">Z</option>
+                        {% if product.tyre_type == product.tyre_type %}
+                            <option value="{{ product.tyre_type }}" selected>{{ product.tyre_type }}</option>
+                            <option value="-">-</option>
+                            <option value="W">W</option>
+                            <option value="Z">Z</option>
+                        {% endif %} 
                     </select>
                     <label for="tyre_type">Select Type</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="tyre_size" name="tyre_size" type="text" class="validate">
+                    <input id="tyre_size" name="tyre_size" type="text" class="validate" value="{{ product.tyre_size }}">
                     <label for="tyre_size">Tyre Size</label>
                 </div>
                 <div class="input-field col s12 m2">
-                    <input id="tyre_model" name="tyre_model" type="text" class="validate">
+                    <input id="tyre_model" name="tyre_model" type="text" class="validate" value="{{ product.tyre_model }}">
                     <label for="tyre_model">Manufacturer/model/DOT</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <input id="description" name="description" type="text" class="validate" required>
+                    <input id="description" name="description" type="text" class="validate" value="{{ product.description }}" required>
                     <label for="description">Description</label>
                 </div>
                 <div class="input-field col s12 m3 offset-m3">
                     <i class="fas fa-euro-sign prefix green-text text-darken-1"></i>
-                    <input id="price" name="price" type="text" class="validate" required>
+                    <input id="price" name="price" type="text" class="validate" value="{{ product.price }}" required>
                     <label for="price">Price</label>
                 </div>
             </div>
             <div class="div row">
                 <div class="col s12 center-align">
-                    <button type="submit" class="waves-effect waves-light green darken-1 btn">
+                    <a href="{{ url_for('get_stock_level') }}" class="waves-effect waves-light red darken-1 btn product-view-btn">
+                        <i class="far fa-window-close left"></i>Cancel
+                    </a> 
+                    <button type="submit" class="waves-effect waves-light green darken-1 btn product-view-btn">
                         <i class="far fa-arrow-alt-circle-up left"></i>Edit product
                     </button>
                 </div>

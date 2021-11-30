@@ -25,3 +25,7 @@ body {
 .icon-table {
     color: green;
 }
+
+.product-view-btn {
+    width: 180px;
+}
