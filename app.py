@@ -148,8 +148,29 @@ def add_product():
 
 @app.route("/edit_product/<product_id>", methods=["GET", "POST"])
 def edit_product(product_id):
-    product = mongo.db.stock_level.find_one({"_id": ObjectId(product_id)})
+    if request.method == "POST":
+        oe = "true" if request.form.get("oe") else "false"
+        edit_product = {
+            "category_name": request.form.get("category_name"),
+            "code": request.form.get("code"),
+            "rim_size": request.form.get("rim_size"),
+            "oe": oe,
+            "width": request.form.get("width"),
+            "bolt_pattern": request.form.get("bolt_pattern"),
+            "et": request.form.get("et"),
+            "center": request.form.get("center"),
+            "tyre_type": request.form.get("tyre_type"),
+            "tyre_size": request.form.get("tyre_size"),
+            "tyre_model": request.form.get("tyre_model"),
+            "description": request.form.get("description"),
+            "price": request.form.get("price"),
+            "created_by": session["user"]
+        }
+        mongo.db.stock_level.update({"_id": ObjectId(product_id)}, edit_product)
+        flash("Product Updated Successfully", category="success")
+        return redirect(url_for("get_stock_level"))
 
+    product = mongo.db.stock_level.find_one({"_id": ObjectId(product_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     rim_sizes = mongo.db.rim_sizes.find().sort("rim_size", 1)
     return render_template("edit_product.html", product=product, categories=categories, rim_sizes=rim_sizes)

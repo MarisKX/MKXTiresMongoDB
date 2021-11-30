@@ -117,9 +117,15 @@
                     <a href="{{ url_for('get_stock_level') }}" class="waves-effect waves-light red darken-1 btn product-view-btn">
                         <i class="far fa-window-close left"></i>Cancel
                     </a> 
-                    <button type="submit" class="waves-effect waves-light green darken-1 btn product-view-btn">
-                        <i class="far fa-arrow-alt-circle-up left"></i>Edit product
-                    </button>
+                    {% if session.user|lower == product.created_by|lower %}
+                        <button type="submit" class="waves-effect waves-light green darken-1 btn product-view-btn">
+                            <i class="far fa-arrow-alt-circle-up left"></i>Edit product
+                        </button>
+                    {% else %}
+                        <button type="submit" class="waves-effect waves-light green darken-1 btn product-view-btn" disabled>
+                            <i class="far fa-arrow-alt-circle-up left"></i>Edit product
+                        </button>
+                    {% endif %}
                 </div>
             </div>
         </form>
