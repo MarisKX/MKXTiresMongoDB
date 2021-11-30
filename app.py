@@ -24,30 +24,6 @@ def dashboard():
     return render_template("dashboard.html")
 
 
-@app.route("/invoices")
-def get_invoices():
-    invoices = mongo.db.incoming_invoices.find()
-    return render_template("invoices.html", invoices=invoices)
-
-
-@app.route("/stock")
-def get_stock_level():
-    stock = mongo.db.stock_level.find()
-    return render_template("stock.html", stock=stock)
-
-
-@app.route("/stock_all")
-def get_stock_level_all():
-    stock = mongo.db.stock_level.find()
-    return render_template("stock_all.html", stock=stock)
-
-
-@app.route("/stock_sold")
-def get_stock_level_sold():
-    stock = mongo.db.stock_level.find()
-    return render_template("stock_sold.html", stock=stock)
-
-
 # REGISTRATION # REGISTRATION # REGISTRATION # REGISTRATION # REGISTRATION
 
 @app.route("/register", methods=["GET", "POST"])
@@ -191,11 +167,52 @@ def edit_product(product_id):
     return render_template("edit_product.html", product=product, categories=categories, rim_sizes=rim_sizes)
 
 
+# DELETE PRODUCT FUNCTION # DELETE PRODUCT FUNCTION # DELETE PRODUCT FUNCTION # DELETE PRODUCT FUNCTION 
+
 @app.route("/delete_product/<product_id>")
 def delete_product(product_id):
     mongo.db.stock_level.remove({"_id": ObjectId(product_id)})
     flash("Product Deleted Successfully", category="success")
     return redirect(url_for("get_stock_level"))
+
+
+# SHOW INVOICES # SHOW INVOICES # SHOW INVOICES # SHOW INVOICES # SHOW INVOICES # SHOW INVOICES 
+
+@app.route("/invoices")
+def get_invoices():
+    invoices = mongo.db.incoming_invoices.find()
+    return render_template("invoices.html", invoices=invoices)
+
+
+# CURRENT STOCK LEVEL # CURRENT STOCK LEVEL # CURRENT STOCK LEVEL # CURRENT STOCK LEVEL
+
+@app.route("/stock")
+def get_stock_level():
+    stock = mongo.db.stock_level.find()
+    return render_template("stock.html", stock=stock)
+
+
+# ALL STOCK LEVEL # ALL STOCK LEVEL # ALL STOCK LEVEL # ALL STOCK LEVEL # ALL STOCK LEVEL 
+
+@app.route("/stock_all")
+def get_stock_level_all():
+    stock = mongo.db.stock_level.find()
+    return render_template("stock_all.html", stock=stock)
+
+
+# SOLD PRODUCTS # SOLD PRODUCTS # SOLD PRODUCTS # SOLD PRODUCTS # SOLD PRODUCTS
+
+@app.route("/stock_sold")
+def get_stock_level_sold():
+    stock = mongo.db.stock_level.find()
+    return render_template("stock_sold.html", stock=stock)
+
+   
+# SETTINGS MAIN # SETTINGS MAIN # SETTINGS MAIN # SETTINGS MAIN # SETTINGS MAIN 
+
+@app.route("/settings/settings_main")
+def settings():
+    return render_template("settings/settings_main.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

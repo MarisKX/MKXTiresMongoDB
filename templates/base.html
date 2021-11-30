@@ -22,15 +22,16 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
                 {% if session.user %}
-                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ url_for('get_invoices') }}">In Invoices</a></li>
-                    <li><a href="#">Out Invoices</a></li>
-                    <li><a href="{{ url_for('get_stock_level') }}">Stock</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-desktop left"></i>Dashboard</a></li>
+                    <li><a href="{{ url_for('get_invoices') }}"><i class="far fa-caret-square-down left"></i>In Invoices</a></li>
+                    <li><a href="#"><i class="far fa-caret-square-up left"></i>Out Invoices</a></li>
+                    <li><a href="{{ url_for('get_stock_level') }}"><i class="fas fa-boxes left"></i>Stock</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line left"></i>Reports</a></li>
+                    <li><a href="{{ url_for('settings') }}"><i class="fas fa-cogs left"></i>Settings</a></li>
+                    <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt left"></i>Log Out</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt left"></i>Log In</a></li>
+                    <li><a href="{{ url_for('register') }}"><i class="fas fa-user-plus left"></i>Register</a></li>
                 {% endif %}
             </ul>
             </div>
@@ -42,6 +43,7 @@
                 <li><a href="#">Out Invoices</a></li>
                 <li><a href="{{ url_for('get_stock_level') }}">Stock</a></li>
                 <li><a href="#">Reports</a></li>
+                <li><a href="{{ url_for('settings') }}"><i class="fas fa-cogs left"></i>Settings</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>

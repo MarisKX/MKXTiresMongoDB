@@ -29,3 +29,24 @@ body {
 .product-view-btn {
     width: 180px;
 }
+.settings-menu {
+    margin: auto 0;
+}
+
+.settings-row {
+    height: 75px;
+    margin-left: 15px;
+}
+
+.settings-col {
+    height: inherit;
+}
+
+.settings-item {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.container {
+    margin-top: 10px;
+}
