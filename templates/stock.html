@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<a href="{{ url_for('add_product') }}" class="waves-effect waves-light green lighten-2 btn" target="_parent"><i class="far fa-arrow-alt-circle-up left"></i>Add new product</a>
+<a href="{{ url_for('add_product') }}" class="waves-effect waves-light green darken-1 btn" target="_parent"><i class="far fa-arrow-alt-circle-up left"></i>Add new product</a>
 
 <table>
     <tr>
@@ -18,6 +18,9 @@
         <th class="tooltipped" data-position="down" data-tooltip="Manufacturer and model of tyre">Tyre model</th>
         <th class="tooltipped" data-position="down" data-tooltip="Short description">Description</th>
         <th class="tooltipped" data-position="down" data-tooltip="Sales price">Price</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Product History"></th>
+        <th class="tooltipped" data-position="down" data-tooltip="Edit"></th>
+        <th class="tooltipped" data-position="down" data-tooltip="Delete"></th>
     </tr>
     {% for item in stock %}
     <tr>
@@ -29,7 +32,7 @@
         <td>{{ item.et }}</td>
         <td>{{ item.center }}</td>
         {% if item.oe == "true" %}
-            <td><i class="fas fa-check"></i></td>
+            <td><i class="green-text text-darken-1 fas fa-check"></i></td>
         {% elif item.oe == "false" %}
             <td> </td>
         {% endif %}
@@ -37,7 +40,10 @@
         <td>{{ item.tyre_size }}</td>
         <td>{{ item.tyre_model }}</td>
         <td>{{ item.description }}</td>
-        <td>{{ item.price }}</td>
+        <td><i class="fas fa-euro-sign"></i> {{ item.price }}</td>
+        <td><a href="#"><i class="green-text text-darken-1 far fa-chart-bar"></i></a></td>
+        <td><a href="#"><i class="green-text text-darken-1 fas fa-pen"></i></a></td>
+        <td><a href="#"><i class="green-text text-darken-1 far fa-trash-alt"></i></a></td>
     </tr>
     {% endfor %}
 </table>
