@@ -1,22 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 
+<a href="#" class="waves-effect waves-light green darken-1 btn" target="_parent"><i class="far fa-plus-square left"></i>Add Invoice</a>
+<br>
+
+<table>
+    <tr>
+        <th class="tooltipped" data-position="down" data-tooltip="">Invoice Date</th>
+        <th class="tooltipped" data-position="down" data-tooltip="">Partner</th>
+        <th class="tooltipped" data-position="down" data-tooltip="">Invoice Number</th>
+        <th class="tooltipped" data-position="down" data-tooltip="">Short Description</th>
+        <th class="tooltipped" data-position="down" data-tooltip="">Amount</th>
+        <th class="tooltipped" data-position="down" data-tooltip="Invoice Details"></th>
+        <th class="tooltipped" data-position="down" data-tooltip="Edit"></th>
+        <th class="tooltipped" data-position="down" data-tooltip="Delete"></th>
+    </tr>
     {% for invoice in invoices %}
-        {{ invoice.Suplier }}<br>
-        {{ invoice.Date }}<br>
-        {{ invoice.Invoice_number }}<br>
-        <br>
-        {{ invoice.Products.0.Product_nr }}<br>
-        {{ invoice.Products.0.Code }}<br>
-        {{ invoice.Products.0.Description }}<br>
-        {{ invoice.Products.0.Quantity }}<br>
-        {{ invoice.Products.0.Price }}<br>
-        <br>
-        {{ invoice.Products.1.Product_nr }}<br>
-        {{ invoice.Products.1.Code }}<br>
-        {{ invoice.Products.1.Description }}<br>
-        {{ invoice.Products.1.Quantity }}<br>
-        {{ invoice.Products.1.Price }}<br>
+        <tr>
+            <td>{{ invoice.Date }}</td>
+            <td>{{ invoice.Partner }}</td>
+            <td>{{ invoice.Invoice_number }}</td>
+            <td>{{ invoice.Short_description }}</td>
+            <td>{{ invoice.Amount }}</td>
+            <td><a href="#"><i class="green-text text-darken-1 far fa-chart-bar"></i></a></td>
+            <td><a href="#"><i class="green-text text-darken-1 fas fa-pen"></i></a></td>
+            <td><a href="#"><i class="green-text text-darken-1 far fa-trash-alt"></i></a></td>
+        </tr>
     {% endfor %}
+</table>
     
 {% endblock %}
