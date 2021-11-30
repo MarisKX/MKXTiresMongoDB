@@ -146,6 +146,8 @@ def add_product():
     return render_template("add_product.html", categories=categories, rim_sizes=rim_sizes)
 
 
+# EDIT PRODUCT FUNCTION # EDIT PRODUCT FUNCTION # EDIT PRODUCT FUNCTION # EDIT PRODUCT FUNCTION 
+
 @app.route("/edit_product/<product_id>", methods=["GET", "POST"])
 def edit_product(product_id):
     if request.method == "POST":
@@ -176,6 +178,11 @@ def edit_product(product_id):
     return render_template("edit_product.html", product=product, categories=categories, rim_sizes=rim_sizes)
 
 
+@app.route("/delete_product/<product_id>")
+def delete_product(product_id):
+    mongo.db.stock_level.remove({"_id": ObjectId(product_id)})
+    flash("Product Deleted Successfully", category="success")
+    return redirect(url_for("get_stock_level"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
