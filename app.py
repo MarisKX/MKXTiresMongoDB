@@ -116,11 +116,13 @@ def logout():
     return redirect(url_for("login"))
 
 
+# ADD PRODUCT FUNCTION # ADD PRODUCT FUNCTION # ADD PRODUCT FUNCTION # ADD PRODUCT FUNCTION 
+
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
     if request.method == "POST":
         oe = "true" if request.form.get("oe") else "false"
-        new_product = {
+        product = {
             "category_name": request.form.get("category_name"),
             "code": request.form.get("code"),
             "rim_size": request.form.get("rim_size"),
@@ -136,12 +138,22 @@ def add_product():
             "price": request.form.get("price"),
             "created_by": session["user"]
         }
-        mongo.db.stock_level.insert_one(new_product)
+        mongo.db.stock_level.insert_one(product)
         flash("New Product Added Successfully", category="success")
         return redirect(url_for("get_stock_level"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     rim_sizes = mongo.db.rim_sizes.find().sort("rim_size", 1)
     return render_template("add_product.html", categories=categories, rim_sizes=rim_sizes)
+
+
+@app.route("/edit_product/<product_id>", methods=["GET", "POST"])
+def edit_product(product_id):
+    product = mongo.db.stock_level.find_one({"_id": ObjectId(product_id)})
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    rim_sizes = mongo.db.rim_sizes.find().sort("rim_size", 1)
+    return render_template("edit_product.html", product=product, categories=categories, rim_sizes=rim_sizes)
+
 
 
 if __name__ == "__main__":

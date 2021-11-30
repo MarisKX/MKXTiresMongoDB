@@ -42,7 +42,7 @@
         <td>{{ item.description }}</td>
         <td><i class="fas fa-euro-sign"></i> {{ item.price }}</td>
         <td><a href="#"><i class="green-text text-darken-1 far fa-chart-bar"></i></a></td>
-        <td><a href="#"><i class="green-text text-darken-1 fas fa-pen"></i></a></td>
+        <td><a href="{{ url_for('edit_product', product_id=item._id) }}"><i class="green-text text-darken-1 fas fa-pen"></i></a></td>
         <td><a href="#"><i class="green-text text-darken-1 far fa-trash-alt"></i></a></td>
     </tr>
     {% endfor %}
