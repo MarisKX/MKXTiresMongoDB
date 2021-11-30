@@ -36,6 +36,18 @@ def get_stock_level():
     return render_template("stock.html", stock=stock)
 
 
+@app.route("/stock_all")
+def get_stock_level_all():
+    stock = mongo.db.stock_level.find()
+    return render_template("stock_all.html", stock=stock)
+
+
+@app.route("/stock_sold")
+def get_stock_level_sold():
+    stock = mongo.db.stock_level.find()
+    return render_template("stock_sold.html", stock=stock)
+
+
 # REGISTRATION # REGISTRATION # REGISTRATION # REGISTRATION # REGISTRATION
 
 @app.route("/register", methods=["GET", "POST"])
@@ -136,7 +148,8 @@ def add_product():
             "tyre_model": request.form.get("tyre_model"),
             "description": request.form.get("description"),
             "price": request.form.get("price"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "stock": "none"
         }
         mongo.db.stock_level.insert_one(product)
         flash("New Product Added Successfully", category="success")

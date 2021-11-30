@@ -27,29 +27,29 @@
         <th class="tooltipped" data-position="down" data-tooltip="Delete"></th>
     </tr>
     {% for item in stock %}
-        {% if item.stock == "yes" %}
-        <tr>
-            <td>{{ item.category_name }}</td>
-            <td>{{ item.code }}</td>
-            <td>{{ item.rim_size }}</td>
-            <td>{{ item.width }}</td>
-            <td>{{ item.bolt_pattern }}</td>
-            <td>{{ item.et }}</td>
-            <td>{{ item.center }}</td>
-            {% if item.oe == "true" %}
-                <td><i class="green-text text-darken-1 fas fa-check"></i></td>
-            {% elif item.oe == "false" %}
-                <td> </td>
-            {% endif %}
-            <td>{{ item.tyre_type }}</td>
-            <td>{{ item.tyre_size }}</td>
-            <td>{{ item.tyre_model }}</td>
-            <td>{{ item.description }}</td>
-            <td><i class="fas fa-euro-sign"></i> {{ item.price }}</td>
-            <td><a href="#"><i class="green-text text-darken-1 far fa-chart-bar"></i></a></td>
-            <td><a href="{{ url_for('edit_product', product_id=item._id) }}"><i class="green-text text-darken-1 fas fa-pen"></i></a></td>
-            <td><a href="{{ url_for('delete_product', product_id=item._id) }}"><i class="green-text text-darken-1 far fa-trash-alt"></i></a></td>
-        </tr>
+        {% if item.stock != "none" %}
+            <tr>
+                <td>{{ item.category_name }}</td>
+                <td>{{ item.code }}</td>
+                <td>{{ item.rim_size }}</td>
+                <td>{{ item.width }}</td>
+                <td>{{ item.bolt_pattern }}</td>
+                <td>{{ item.et }}</td>
+                <td>{{ item.center }}</td>
+                {% if item.oe == "true" %}
+                    <td><i class="green-text text-darken-1 fas fa-check"></i></td>
+                {% elif item.oe == "false" %}
+                    <td> </td>
+                {% endif %}
+                <td>{{ item.tyre_type }}</td>
+                <td>{{ item.tyre_size }}</td>
+                <td>{{ item.tyre_model }}</td>
+                <td>{{ item.description }}</td>
+                <td><i class="fas fa-euro-sign"></i> {{ item.price }}</td>
+                <td><a href="#"><i class="green-text text-darken-1 far fa-chart-bar"></i></a></td>
+                <td><a href="{{ url_for('edit_product', product_id=item._id) }}"><i class="green-text text-darken-1 fas fa-pen"></i></a></td>
+                <td><a href="{{ url_for('delete_product', product_id=item._id) }}"><i class="green-text text-darken-1 far fa-trash-alt"></i></a></td>
+            </tr>
         {% endif %}
     {% endfor %}
 </table>

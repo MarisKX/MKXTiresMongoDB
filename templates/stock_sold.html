@@ -27,7 +27,7 @@
         <th class="tooltipped" data-position="down" data-tooltip="Delete"></th>
     </tr>
     {% for item in stock %}
-        {% if item.stock == "yes" %}
+        {% if item.stock == "no" %}
         <tr>
             <td>{{ item.category_name }}</td>
             <td>{{ item.code }}</td>
