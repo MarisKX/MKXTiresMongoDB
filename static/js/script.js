@@ -2,6 +2,8 @@ $(document).ready(function () {
     $(".sidenav").sidenav({edge: "right"});
     $(".tooltipped").tooltip();
     $('select').formSelect();
+    $(".settings-frame").addClass("hidden");
+    $("input:text").focus();
     
     validateMaterializeSelect();
     function validateMaterializeSelect() {
@@ -32,4 +34,10 @@ $(document).ready(function () {
     }
 });
 
-$("input:text").focus();
+function showSettings(settingsId) {
+    console.log(settingsId);
+    $(".settings-frame").addClass("hidden");
+    $(settingsId).removeClass("hidden");
+}
+
+

@@ -210,9 +210,9 @@ def get_stock_level_sold():
    
 # SETTINGS MAIN # SETTINGS MAIN # SETTINGS MAIN # SETTINGS MAIN # SETTINGS MAIN 
 
-@app.route("/settings/settings_main")
+@app.route("/settings")
 def settings():
-    return render_template("settings/settings_main.html")
+    return render_template("settings.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

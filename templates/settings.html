@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row settings-row">
+    <div class="col s12 l10 offset-l1 text-shadow grey darken-1 settings-col">
+        <div class="row settings-row">
+            <div class="col s12 m3 settings-item">
+                <div class="waves-effect waves-light green darken-1 btn" target="_parent" 
+                onclick="showSettings('#company-settings-frame')"><i class="far fa-building left"></i>Company</div>
+            </div>
+            <div class="col s12 m3 settings-item">
+                <a href="#" class="waves-effect waves-light green darken-1 btn" target="_parent" 
+                onclick="showSettings('#product-settings-frame')"><i class="fas fa-boxes left"></i>Products</a>
+            </div>
+            <div class="col s12 m3 settings-item">
+                <a href="#" class="waves-effect waves-light green darken-1 btn" target="_parent" 
+                onclick="showSettings('#partners-settings-frame')"><i class="far fa-address-book left"></i>Partners</a>
+            </div>
+            <div class="col s12 m3 settings-item">
+                <a href="#" class="waves-effect waves-light green darken-1 btn" target="_parent" 
+                disabled onclick="showSettings('#printer-settings-frame')"><i class="fas fa-print left"></i>Printer</a>
+            </div>
+        </div>
+        <div id="company-settings-frame" class="settings-frame">
+            Company settings
+        </div>
+        <div id="product-settings-frame" class="hidden settings-frame">
+            Product settings
+        </div>
+        <div id="partners-settings-frame" class="hidden settings-frame">
+            Partners settings
+        </div>
+        <div id="printer-settings-frame" class="hidden settings-frame">
+            Printer settings
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
